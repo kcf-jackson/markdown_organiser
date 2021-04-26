@@ -1,0 +1,16 @@
+#main {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+}
+
+#editor {
+    height: 100%;
+    width: 48%;
+}
+
+#right {
+    height: 100%;
+    width: 48%;
+}
