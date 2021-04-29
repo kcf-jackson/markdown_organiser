@@ -6,11 +6,47 @@
 }
 
 #editor {
+    display: flex;
     height: 100%;
     width: 48%;
+    padding: 2px;
 }
 
 #right {
     height: 100%;
     width: 48%;
+}
+
+textarea {
+    width: 100%;
+    tab-size: 4;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: black;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 15px;
+}
+
+.row {
+    display: flex;
+    border: solid 1px;
+    flex-direction: row;
+    border-radius: 4px;
+    margin: 12px;
+    padding: 8px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    margin: 8px;
 }

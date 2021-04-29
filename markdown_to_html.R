@@ -3,23 +3,27 @@
 linear_to_tree <- function(ps) {
     root <- div(className = "root")
     pointer <- list(board = NULL, row = NULL, col = NULL)
+    active_header <- root
     for (p in ps) {
         if (p$classList$contains("board")) {
             pointer$board <- p
+            active_header <- p
             root$appendChild(p)
             next
         }
         if  (p$classList$contains("row")) {
             pointer$row <- p
+            active_header <- p
             pointer$board$appendChild(p)
             next
         }
         if  (p$classList$contains("column")) {
             pointer$col <- p
+            active_header <- p
             pointer$row$appendChild(p)
             next
         }
-        pointer$col$appendChild(p)
+        active_header$appendChild(p)
     }
     root
 }

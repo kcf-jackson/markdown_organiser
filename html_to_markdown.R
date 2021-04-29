@@ -14,10 +14,18 @@ html_to_markdown <- function(node, res = Array()) {
     for (child in node$children) {
         html_to_markdown(child, res)
     }
-    res
+    res$reduce(~.x %+% '\n' %+% .y)
 }
 
 parse_dom <- function(dom) {
+    # "https://unpkg.com/showdown/dist/showdown.min.js"
     converter <- showdown$Converter$new()
     converter$makeMarkdown(dom$outerHTML)
 }
+
+# (JSBench.me: showdown is 3 times faster than turndown.)
+# parse_dom <- function(dom) {
+#     # "https://unpkg.com/turndown/dist/turndown.js"
+#     converter <- TurndownService$new()
+#     converter$turndown(dom)
+# }
