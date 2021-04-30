@@ -5,6 +5,7 @@ renderer = list(
         if (level == 1) return(class_div("board", text))
         if (level == 2) return(class_div("row", text))
         if (level == 3) return(class_div("column", text))
+        if (level == 4) return(class_div("line", text))
         raw_str('`<h${level}>${text}</h${level}>`')
     }
 )
