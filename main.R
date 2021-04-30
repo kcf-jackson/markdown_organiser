@@ -9,8 +9,8 @@
 #! load_script("./assets/textarea_tab.js")
 #! load_script("./assets/styles.css")
 
-#! load_script("content_editable.R")
 #! load_script("editor.R")
+#! load_script("content_editable.R")
 #! load_script("marked_setup.R")
 #! load_script("markdown_to_html.R")
 #! load_script("html_to_markdown.R")
@@ -21,6 +21,7 @@ ui <- div(id = 'main',
     div(id = 'editor', input_box),
     div(id = 'right'))
 render(ui)
+
 
 # Setup markdown parser
 marked::use({renderer})

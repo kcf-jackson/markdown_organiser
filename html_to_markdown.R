@@ -2,11 +2,10 @@
 
 # Interface
 html_to_markdown <-  function(node) {
-    res <- node %>%
+    node$cloneNode(TRUE) %>%
         rm_content_editable() %>%
-        convert_html_to_markdown()
-    make_content_editable(node)
-    res
+        convert_html_to_markdown() %>%
+        console_pipe(F)
 }
 
 
@@ -38,6 +37,9 @@ convert_html_to_markdown <- function(node, res = Array()) {
             convert_html_to_markdown(child, res)
         }
 
+    } else if (node$nodeName == "UL" || node$nodeName == "OL") {
+        res$push(parse_dom(node) %+% "\n")
+
     } else {
         res$push(parse_dom(node))
     }
@@ -48,14 +50,6 @@ convert_html_to_markdown <- function(node, res = Array()) {
 
 
 # parser_dom :: DOM -> character
-# parse_dom <- function(node) {
-#     # "https://unpkg.com/showdown/dist/showdown.min.js"
-#     converter <- showdown$Converter$new()
-#     converter$makeMarkdown(node$outerHTML)
-# }
-
-
-# parser_dom :: DOM -> character
 parse_dom <- function(node) {
     # "https://unpkg.com/turndown/dist/turndown.js"
     converter <- TurndownService$new()
@@ -63,5 +57,8 @@ parse_dom <- function(node) {
 }
 
 
-# JSBench.me: showdown is 3 times faster than turndown,
-# but turndown generates more accurate conversion.
+# A see-through pipe function
+console_pipe <- function(x, display) {
+    if (display) console::log(x)
+    x
+}
