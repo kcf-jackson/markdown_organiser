@@ -13,18 +13,14 @@ markdown_to_html <- function(md_string) {
     # Enable content editable
     base$onclick <- function(evt) {
         el <- evt$target
-        if (GLOBAL$pointer) {
-            p <- GLOBAL$pointer
-            if (p != el) {
-                rm_content_editable(base)
-                GLOBAL$pointer <- NULL
-            }
-        } else {
+        if (GLOBAL$pointer == el) return(NULL)
+
+        rm_content_editable(base)
+        if (!el$classList$contains("root")) {
             GLOBAL$pointer <- el
             el$contentEditable <- TRUE
             el$focus()
         }
-        NULL
     }
 
     # Add reactive update in the reverse direction

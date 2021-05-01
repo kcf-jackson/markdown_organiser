@@ -1,3 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
 #main {
     display: flex;
     flex-direction: row;
@@ -5,31 +14,58 @@
     width: 100vw;
 }
 
+#sidebar {
+    min-width: 64px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 12px;
+    cursor: pointer;
+}
+
+.icon:hover {
+    background: #F0F0F0;
+}
+
+i.fa {
+    font-size: x-large;
+}
+
 #editor {
     display: flex;
     height: 100%;
-    width: 48%;
-    padding: 2px;
+    min-width: 33%;
 }
 
 #right {
     height: 100%;
-    width: 48%;
+    display: flex;
+    align-co
 }
 
 textarea {
     width: 100%;
     tab-size: 4;
+    font-size: large;
+    border: none;
+    padding: 6px 10px;
+    border: solid;
+    border-width: 0 1px;
 }
 
 .board {
     display: flex;
     flex-direction: column;
     padding: 24px;
+    margin: 24px;
+    border-radius: 4px;
     border: black;
-    border-style: solid;
-    border-width: 10px;
-    border-radius: 15px;
+    border: solid;
+    border-width: 1px;
+    background: white;
 }
 
 .row {
@@ -39,6 +75,7 @@ textarea {
     border-radius: 4px;
     margin: 12px;
     padding: 8px;
+    background: white;
 }
 
 .column {
@@ -49,4 +86,5 @@ textarea {
     border-width: 1px;
     border-radius: 4px;
     margin: 8px;
+    background: white;
 }

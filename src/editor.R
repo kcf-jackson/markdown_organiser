@@ -5,6 +5,9 @@ input_box <- dom("textarea", list(id = "input", className = "tabSupport"))
 
 input_box$oninput <- function() {
     tryCatch({
+        # Destory previous Sortable instances
+        destory_sortable(GLOBAL$sortable)
+
         # Convert the Markdown input into HTML
         output_doms <- markdown_to_html(this$value)
 

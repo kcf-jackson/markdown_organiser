@@ -1,6 +1,8 @@
 #! config(rules = basic_rules(), deparsers = dp("basic", "dom", "auto"))
 
 #! load_library("dom")
+#! load_library("fontawesome")
+#! load_library("io")
 #! load_script("https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js")
 #! load_script("https://unpkg.com/turndown/dist/turndown.js")
 #! load_script("https://code.jquery.com/jquery-3.6.0.min.js")
@@ -17,14 +19,39 @@
 
 
 # Global variable
-GLOBAL <- list(pointer = NULL)
+GLOBAL <- list(pointer = NULL,
+               sortable = Array())
 
-# UI
+# UI helpers
+fa_icon <- function(cls, text) {
+    div(id = text, className = "icon",
+        dom("i", list(className = cls, "aria-hidden" = TRUE)),
+        div(innerText = text))
+}
+
+# UI layout
 ui <- div(id = 'main',
+    div(id = "sidebar",
+        fa_icon("fa fa-floppy-o", "Save"),
+        fa_icon("fa fa-folder-open-o", "Load"),
+        fa_icon("fa fa-question-circle", "Help")),
     div(id = 'editor', input_box),
     div(id = 'right'))
 render(ui)
 
+# UI behaviour
+select_dom("#Save")$onclick <- function() {
+    write(input_box$value, "markdown_org.md")
+}
+
+select_dom("#Load")$onclick <- function() {
+    scan(function(text) {
+        input_box$value <- text
+        input_box$oninput()
+    })
+}
 
 # Setup markdown parser
 marked::use({renderer})
+
+

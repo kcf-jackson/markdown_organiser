@@ -21,12 +21,20 @@ enable_sortable <- function() {
     for (selector in Array(".root", ".board", ".row", ".column",
                            "ul", "ol")) {
         for (head in select_doms(selector)) {
-            options <- list(group = selector, animation = 150)
-            # if (selector == "ul" || selector == "ol") {
-            #     options$handle <- "list-handle"
-            # }
-            Sortable$new(head, options)
+            options <- list(group = selector, animation = 150,
+                            swapThreshold = 0.60)
+            s <- Sortable$new(head, options)
+            # Keep a reference for destruction later
+            GLOBAL$sortable$push(s)
         }
     }
     NULL
+}
+
+destory_sortable <- function(xs) {
+    while (xs$length > 0) {
+        s <- xs$pop()
+        s$destroy()
+    }
+    xs
 }
