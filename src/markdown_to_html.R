@@ -8,13 +8,29 @@ markdown_to_html <- function(md_string) {
                 marked.parser() %>%
                 string_to_dom())$
         filter(~.x) %>%              # Remove null items
-        linear_to_tree() %>%         # Add nested structure
-        make_content_editable()      # Enable content editable
+        linear_to_tree()             # Add nested structure
 
+    # Enable content editable
+    base$onclick <- function(evt) {
+        el <- evt$target
+        if (GLOBAL$pointer) {
+            p <- GLOBAL$pointer
+            if (p != el) {
+                rm_content_editable(base)
+                GLOBAL$pointer <- NULL
+            }
+        } else {
+            GLOBAL$pointer <- el
+            el$contentEditable <- TRUE
+            el$focus()
+        }
+        NULL
+    }
+
+    # Add reactive update in the reverse direction
+    rev_update <- compose(update_input_box, html_to_markdown)
     base %>%
-        add_reactive_update(         # Add bidirectional update
-            compose(update_input_box, html_to_markdown)
-        )
+        add_reactive_update(rev_update)
 }
 
 
@@ -64,6 +80,7 @@ add_reactive_update <- function(node, f) {
 }
 
 
+# Update the value of the editor
 update_input_box <- function(res, id = "#input") {
     select_dom(id)$value <- res
     NULL
@@ -72,4 +89,3 @@ update_input_box <- function(res, id = "#input") {
 compose <- function(f, g) {
     function(x) f(g(x))
 }
-

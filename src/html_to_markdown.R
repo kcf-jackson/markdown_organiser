@@ -37,7 +37,9 @@ convert_html_to_markdown <- function(node, res = Array()) {
             convert_html_to_markdown(child, res)
         }
 
-    } else if (node$nodeName == "UL" || node$nodeName == "OL") {
+    } else if (node$nodeName == "UL" ||
+               node$nodeName == "OL" ||
+               node$nodeName == "P") {
         res$push(parse_dom(node) %+% "\n")
 
     } else {
