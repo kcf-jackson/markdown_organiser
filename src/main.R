@@ -5,9 +5,10 @@
 #! load_library("io")
 #! load_script("https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js")
 #! load_script("https://unpkg.com/turndown/dist/turndown.js")
-#! load_script("https://code.jquery.com/jquery-3.6.0.min.js")
+#! load_script("https://unpkg.com/turndown-plugin-gfm/dist/turndown-plugin-gfm.js")
 #! load_script("https://cdn.jsdelivr.net/npm/sortablejs@1.13.0/Sortable.min.js")
 
+#! load_script("https://code.jquery.com/jquery-3.6.0.min.js")
 #! load_script("../assets/textarea_tab.js")
 #! load_script("../assets/styles.css")
 
@@ -53,5 +54,3 @@ select_dom("#Load")$onclick <- function() {
 
 # Setup markdown parser
 marked::use({renderer})
-
-

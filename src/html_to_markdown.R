@@ -55,6 +55,7 @@ convert_html_to_markdown <- function(node, res = Array()) {
 parse_dom <- function(node) {
     # "https://unpkg.com/turndown/dist/turndown.js"
     converter <- TurndownService$new()
+    converter$use(turndownPluginGfm::gfm)
     converter$turndown(node)
 }
 
