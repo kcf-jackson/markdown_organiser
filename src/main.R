@@ -11,13 +11,14 @@
 #! load_script("https://code.jquery.com/jquery-3.6.0.min.js")
 #! load_script("../assets/textarea_tab.js")
 #! load_script("../assets/styles.css")
+#! load_script("../assets/tailwind_colors.css")
 
 #! load_script("editor.R")
 #! load_script("add_ons.R")
 #! load_script("marked_setup.R")
 #! load_script("markdown_to_html.R")
 #! load_script("html_to_markdown.R")
-
+#! load_script("data_attributes.R")
 
 # Global variable
 GLOBAL <- list(pointer = NULL,

@@ -7,9 +7,9 @@ enable_content_editable <-  function(node) {
         el <- evt$target
         if (GLOBAL$pointer == el) return(NULL)
 
+        GLOBAL$pointer <- el
         rm_content_editable(node)
         if (!el$classList$contains("root")) {
-            GLOBAL$pointer <- el
             el$contentEditable <- TRUE
             el$focus()
         }
@@ -33,7 +33,7 @@ enable_sortable <- function() {
                            ".row-content", ".column", "ul", "ol")) {
         for (head in select_doms(selector)) {
             options <- list(group = selector, animation = 150,
-                            swapThreshold = 0.60)
+                            swapThreshold = 1)
             s <- Sortable$new(head, options)
             # Keep a reference for destruction later
             GLOBAL$sortable$push(s)

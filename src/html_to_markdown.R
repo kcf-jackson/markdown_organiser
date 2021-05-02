@@ -20,16 +20,17 @@ convert_html_to_markdown <- function(node, res = Array()) {
             # Do nothing and skip
 
         } else if (node_cls$contains("board")) {
-            res$push("# " %+% data)
+            res$push("# " %+% data %+% classList_to_metadata(node_cls, "board"))
 
         } else if (node_cls$contains("row") || node_cls$contains("row-content")) {
             # Do nothing and skip
 
         } else if (node_cls$contains("row-text")) {
-            res$push("## " %+% data)
+            p_node_cls <- node$parentNode$classList
+            res$push("## " %+% data %+% classList_to_metadata(p_node_cls, "row"))
 
         } else if (node_cls$contains("column")) {
-            res$push("### " %+% data)
+            res$push("### " %+% data %+% classList_to_metadata(node_cls, "column"))
 
         } else {
             res$push(parse_dom(node))
@@ -67,4 +68,16 @@ parse_dom <- function(node) {
 console_pipe <- function(x, display) {
     if (display) console::log(x)
     x
+}
+
+
+# classList_to_metadata :: Array -> String
+classList_to_metadata <- function(xs, exclude) {
+    sortable_ls <- Array("sortable-chosen", "sortable-ghost", "sortable-drag")
+    res <- Array(...xs)$
+        filter(x %=>% !sortable_ls$includes(x))$
+        filter(x %=>% x != exclude)$
+        join(", ")
+    if (res != "") return("{" %+% res %+% "}")
+    res
 }
