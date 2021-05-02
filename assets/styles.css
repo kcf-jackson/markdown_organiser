@@ -70,13 +70,19 @@ textarea {
 
 .row {
     display: flex;
+    flex-direction: column;
     border: solid 1px;
-    flex-direction: row;
     border-radius: 4px;
     margin: 12px;
     padding: 8px;
     background: white;
 }
+
+.row-content {
+    display: flex;
+    flex-direction: row;
+}
+
 
 .column {
     display: flex;

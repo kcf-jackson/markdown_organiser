@@ -22,7 +22,10 @@ convert_html_to_markdown <- function(node, res = Array()) {
         } else if (node_cls$contains("board")) {
             res$push("# " %+% data)
 
-        } else if (node_cls$contains("row")) {
+        } else if (node_cls$contains("row") || node_cls$contains("row-content")) {
+            # Do nothing and skip
+
+        } else if (node_cls$contains("row-text")) {
             res$push("## " %+% data)
 
         } else if (node_cls$contains("column")) {
@@ -51,7 +54,7 @@ convert_html_to_markdown <- function(node, res = Array()) {
 }
 
 
-# parser_dom :: DOM -> character
+# parse_dom :: DOM -> character
 parse_dom <- function(node) {
     # "https://unpkg.com/turndown/dist/turndown.js"
     converter <- TurndownService$new()

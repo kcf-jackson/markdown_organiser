@@ -1,11 +1,20 @@
 #! config(rules = basic_rules(), deparsers = dp("basic", "dom", "auto"))
 
-make_content_editable <- function(x) {
-    x$contentEditable <- TRUE
-    for (child in x$children) {
-        make_content_editable(child)
+
+# Make items content-editable ---------------------------------------------
+enable_content_editable <-  function(node) {
+    node$onclick <- function(evt) {
+        el <- evt$target
+        if (GLOBAL$pointer == el) return(NULL)
+
+        rm_content_editable(node)
+        if (!el$classList$contains("root")) {
+            GLOBAL$pointer <- el
+            el$contentEditable <- TRUE
+            el$focus()
+        }
     }
-    x
+    node
 }
 
 rm_content_editable <- function(x) {
@@ -16,10 +25,12 @@ rm_content_editable <- function(x) {
     x
 }
 
-# Make items sortable
+
+
+# Make items sortable ---------------------------------------------------
 enable_sortable <- function() {
-    for (selector in Array(".root", ".board", ".row", ".column",
-                           "ul", "ol")) {
+    for (selector in Array(".root", ".board", ".row",
+                           ".row-content", ".column", "ul", "ol")) {
         for (head in select_doms(selector)) {
             options <- list(group = selector, animation = 150,
                             swapThreshold = 0.60)
@@ -31,10 +42,39 @@ enable_sortable <- function() {
     NULL
 }
 
-destory_sortable <- function(xs) {
+destroy_sortable <- function(xs) {
     while (xs$length > 0) {
         s <- xs$pop()
         s$destroy()
     }
     xs
+}
+
+
+
+# Enable reverse update from HTML to Markdown -----------------------------
+enable_reverse_update <- function(node) {
+    rev_update <- compose(update_input_box, html_to_markdown)
+    node %>%
+        add_reactive_update(rev_update)
+}
+
+# Watch a node and call `f` for when the node changes
+add_reactive_update <- function(node, f) {
+    options <- list(attributes = T, childList = T, subtree = T,
+                    characterData = T)
+    guard <- MutationObserver$new(function() { f(node) })
+    guard$observe(node, options)
+    node
+}
+
+# Update the value of the editor
+update_input_box <- function(res, id = "#input") {
+    select_dom(id)$value <- res
+    NULL
+}
+
+# Compose two functions
+compose <- function(f, g) {
+    function(x) f(g(x))
 }

@@ -4,8 +4,8 @@
 #! load_library("fontawesome")
 #! load_library("io")
 #! load_script("https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js")
-#! load_script("https://unpkg.com/turndown/dist/turndown.js")
-#! load_script("https://unpkg.com/turndown-plugin-gfm/dist/turndown-plugin-gfm.js")
+#! load_script("../assets/turndown.js")
+#! load_script("../assets/turndown-plugin-gfm.js")
 #! load_script("https://cdn.jsdelivr.net/npm/sortablejs@1.13.0/Sortable.min.js")
 
 #! load_script("https://code.jquery.com/jquery-3.6.0.min.js")
@@ -35,6 +35,7 @@ ui <- div(id = 'main',
     div(id = "sidebar",
         fa_icon("fa fa-floppy-o", "Save"),
         fa_icon("fa fa-folder-open-o", "Load"),
+        fa_icon("fa fa-clipboard", "Template"),
         fa_icon("fa fa-question-circle", "Help")),
     div(id = 'editor', input_box),
     div(id = 'right'))
