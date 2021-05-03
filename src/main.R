@@ -3,13 +3,15 @@
 #! load_library("dom")
 #! load_library("fontawesome")
 #! load_library("io")
-#! load_script("https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js")
+
+#! load_script("../assets/marked.min.js")
 #! load_script("../assets/turndown.js")
 #! load_script("../assets/turndown-plugin-gfm.js")
-#! load_script("https://cdn.jsdelivr.net/npm/sortablejs@1.13.0/Sortable.min.js")
+#! load_script("../assets/Sortable.min.js")
 
-#! load_script("https://code.jquery.com/jquery-3.6.0.min.js")
+#! load_script("../assets/jquery-3.6.0.min.js")
 #! load_script("../assets/textarea_tab.js")
+
 #! load_script("../assets/styles.css")
 #! load_script("../assets/tailwind_colors.css")
 
