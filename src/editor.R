@@ -27,3 +27,17 @@ input_box$oninput <- function() {
     })
     TRUE
 }
+
+input_box$onclick <- function() {
+    if (select_dom(".root")) {
+        rm_draggable(select_dom(".root"))
+    }
+}
+
+rm_draggable <- function(x) {
+    x$removeAttribute("draggable")
+    for (child in x$children) {
+        rm_draggable(child)
+    }
+    x
+}

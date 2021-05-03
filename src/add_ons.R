@@ -61,8 +61,7 @@ enable_reverse_update <- function(node) {
 
 # Watch a node and call `f` for when the node changes
 add_reactive_update <- function(node, f) {
-    options <- list(attributes = T, childList = T, subtree = T,
-                    characterData = T)
+    options <- list(attributes = T, subtree = T, characterData = T)
     guard <- MutationObserver$new(function() { f(node) })
     guard$observe(node, options)
     node
