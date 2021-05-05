@@ -32,8 +32,10 @@ enable_sortable <- function() {
     for (selector in Array(".root", ".board", ".row",
                            ".row-content", ".column", "ul", "ol")) {
         for (head in select_doms(selector)) {
-            options <- list(group = selector, animation = 150,
-                            swapThreshold = 1)
+            options <- list(group = selector,
+                            animation = 150,
+                            swapThreshold = 1,
+                            dragClass = "lightgray")
             s <- Sortable$new(head, options)
             # Keep a reference for destruction later
             GLOBAL$sortable$push(s)
