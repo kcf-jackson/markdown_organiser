@@ -28,6 +28,46 @@ textarea {
     min-width: 64px;
 }
 
+#help_page_container {
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    background: white;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    overflow: hidden;
+}
+
+#help_page {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 60px;
+    min-width: 1000px;
+    max-height: 800px;
+    overflow-y: scroll;
+}
+
+#template_page_container {
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    background: white;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    overflow: hidden;
+}
+
+#template_page {
+    border-radius: 10px;
+    padding: 40px 60px;
+    max-height: 800px;
+    overflow: scroll;
+}
+
+.template_option {
+    padding: 12px;
+}
+
 .icon {
     display: flex;
     flex-direction: column;
@@ -74,7 +114,7 @@ i.fa {
     border: solid 1px;
     border-radius: 4px;
     margin: 12px;
-    padding: 8px;
+    padding: 8px 12px;
     background: white;
 }
 
@@ -86,10 +126,61 @@ i.fa {
 .column {
     display: flex;
     flex-direction: column;
-    padding: 6px;
+    padding: 6px 10px;
     border-style: solid;
     border-width: 1px;
     border-radius: 4px;
     margin: 8px;
     background: white;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.overlay-text {
+    background: white;
+}
+
+.heading-1 {
+    font-weight: bold;
+    font-size: x-large;
+    border: none;
+    padding: 6px;
+    margin: 20px 8px;
+}
+
+.lightgray {
+    background: #F0F0F0;
+}
+
+.v-margin-0 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+button {
+    padding: 8px 12px;
+    min-width: 70px;
+    margin: 6px 12px;
+}
+
+.bold {
+    font-weight: bold;
 }
