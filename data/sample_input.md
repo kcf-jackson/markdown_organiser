@@ -30,6 +30,8 @@ _Some interesting projects that excite you_
 *   item 3
 
 ### Done
+*   item 1
+
 ## Project 2
 ### Todo
 *   item 1
@@ -41,6 +43,8 @@ _Some interesting projects that excite you_
 *   item 3
 
 ### Done
+*   item 1
+
 # Weekly Task Planner
 _Some uplifting quote that makes you productive_
 

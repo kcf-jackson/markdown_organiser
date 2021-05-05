@@ -16,7 +16,7 @@
 
 ## Q and A {v-margin-0}
 *   Q. What is this app about?  
-    A. This is an experiment to extend Markdown's functionality without changing its syntax or forgoing its plain-text appeal. I like the simplicity and robustness of plain text, and I also like having visual aids and being able to interact with data in an intuitive way. 
+    A. This is an experiment to extend Markdown's functionality without changing its syntax or forgoing its plain-text appeal. I made this because I like the simplicity and robustness of plain text, and I also like having visual aids and being able to interact with data in an intuitive way. 
     
 *   Q. How do I copy a card?  
     A. It's Markdown, copying a card is just copying the text!

@@ -132,6 +132,7 @@ i.fa {
     border-radius: 4px;
     margin: 8px;
     background: white;
+    min-width: 105px;
 }
 
 .overlay {
