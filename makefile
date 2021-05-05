@@ -3,6 +3,7 @@ shiny:
 	scp -r ./assets/* ./shiny_markdown_organiser/assets/
 	scp -r ./data/* ./shiny_markdown_organiser/data/
 	scp -r ./img/* ./shiny_markdown_organiser/www/img/
+	scp ./LICENSE.md ./shiny_markdown_organiser/
 
 clean:
 	rm -r ./shiny_markdown_organiser/src/
