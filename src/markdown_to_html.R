@@ -32,17 +32,30 @@ linear_to_tree <- function(ps) {
         }
         if  (p$classList$contains("column")) {
             active_header <- p
-            pointer_row <- ifelse(
-                pointer$row$classList$contains("row"),
-                pointer$row$querySelector(".row-content"),
-                pointer$row
-            )
-            pointer_row$appendChild(p)
+            pointer$row %>% append_column(p)
             next
         }
-        active_header$appendChild(p)
+        active_header %>% append_general(p)
     }
     root
+}
+
+
+# Handle the special case related to the row container
+append_column <- function(parent, child) {
+    if (parent$classList$contains("row")) {
+        s <- parent$querySelector(".row-content")
+        return(s$appendChild(child))
+    }
+    parent$appendChild(child)
+}
+
+append_general <- function(parent, child) {
+    if (parent$classList$contains("row")) {
+        s <- parent$querySelector(".row-content")
+        return(parent$insertBefore(child, s))
+    }
+    parent$appendChild(child)
 }
 
 
