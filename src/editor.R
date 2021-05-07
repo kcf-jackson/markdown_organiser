@@ -1,7 +1,8 @@
 #! config(rules = basic_rules(), deparsers = dp("basic", "dom", "auto"))
 
 # Editor for the Markdown source
-input_box <- dom("textarea", list(id = "input", className = "tabSupport"))
+input_box <- dom("textarea",
+                 list(id = "input", className = "tabSupport mytextarea"))
 
 input_box$oninput <- function() {
     tryCatch({
@@ -32,6 +33,7 @@ input_box$onclick <- function() {
     if (select_dom(".root")) {
         rm_draggable(select_dom(".root"))
     }
+    TRUE
 }
 
 rm_draggable <- function(x) {

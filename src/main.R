@@ -3,6 +3,7 @@
 #! load_library("dom")
 #! load_library("fontawesome")
 #! load_library("io")
+#! load_script("https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/utilities.min.css")
 
 #! load_script("../assets/marked.min.js")
 #! load_script("../assets/turndown.js")
@@ -14,7 +15,6 @@
 #! load_script("../assets/shiny.min.js")
 
 #! load_script("../assets/styles.css")
-#! load_script("../assets/tailwind_colors.css")
 
 #! load_script("ui.R")
 #! load_script("editor.R")
@@ -49,13 +49,13 @@ template_page <- div(
     className = "display-none",
     div(
         id = "template_page",
-        template_option("Kanban Todo", "kanban", "/img/kanban.png"),
-        template_option("Daily Planner", "daily-planner", "/img/daily.png"),
-        template_option("Weekly Planner", "weekly-planner", "/img/weekly.png"),
-        template_option("Monthly Planner", "monthly-planner", "/img/monthly.png"),
+        template_option("Kanban Todo", "kanban", "./img/kanban.png"),
+        template_option("Daily Planner", "daily-planner", "./img/daily.png"),
+        template_option("Weekly Planner", "weekly-planner", "./img/weekly.png"),
+        template_option("Monthly Planner", "monthly-planner", "./img/monthly.png"),
         div(style = "display:flex; flex-direction:row;",
-            button(innerText = "OK", id = "okay"),
-            button(innerText = "Cancel", id  ="cancel")
+            button(innerText = "OK", id = "okay", className = "mybutton"),
+            button(innerText = "Cancel", id  ="cancel", className = "mybutton")
         )
     )
 )
@@ -84,6 +84,7 @@ select_dom(".overlay")$onclick <- function(evt) {
         hide("#template_page_container")
         hide("#help_page_container")
     }
+    TRUE
 }
 
 select_dom("#Template")$onclick <- function() {

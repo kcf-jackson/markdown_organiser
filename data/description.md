@@ -8,11 +8,11 @@
 ## Features {v-margin-0}
 *   All cards and items are **editable** and **movable**. **Click** to edit the text, and **Drag** to move the objects.
 *   Updates are bidirectional (redundant new-lines and whitespaces in the Markdown file are not preserved)
-*   Support basic colour options at the heading levels (1, 2, and 3). Colour options are encoded as `COLOUR-WEIGHT`, where 
+*   Support CSS classes from the [tailwind](https://tailwindcss.com/) CSS framework at the heading levels (1, 2, and 3). For example, background colour options are encoded as `bg-COLOUR-WEIGHT`, where
     - `COLOUR` can be one of {`gray, red, yellow, green, blue, indigo, purple, pink`}, and 
     - `WEIGHT` can be one of {`50, 100, 200, 300, ..., 900`}. 
     
-    To use the colour, simple wrap the colour option in curly bracket and add it to the end of a heading, e.g. `# Board {blue-100}`.
+    To use the colour, simple wrap the colour option in curly bracket and add it to the end of a heading, e.g. `# Board {bg-yellow-100}`.
 
 ## Q and A {v-margin-0}
 *   Q. What is this app about?  

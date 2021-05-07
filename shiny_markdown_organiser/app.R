@@ -1,16 +1,18 @@
-# remotes::install_github("kcf-jackson/sketch", "experiment")
-library(sketch)
 library(shiny)
 source("calendar.R")
 
 
-# Compile R files on-the-fly
-setwd("./src")
-file.copy(
-    source_r("main.R", launch_browser = NULL),
-    "../www/index.html", overwrite = T
-)
-setwd("../")
+# # Compile R files on-the-fly
+# # This is commented out because shinyapps.io has difficulty inferring
+# # the correct dependencies. So the compilation is done ahead of time
+# # instead.
+# remotes::install_github("kcf-jackson/sketch", "experiment")
+# setwd("./src")
+# file.copy(
+#     sketch::source_r("main.R", launch_browser = NULL),
+#     "../www/index.html", overwrite = T
+# )
+# setwd("../")
 
 
 # Define server logic to handle templates and file IO

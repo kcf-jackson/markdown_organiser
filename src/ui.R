@@ -6,17 +6,19 @@
 fa_icon <- function(cls, text) {
     div(id = text, className = "icon",
         dom("i", list(className = cls, "aria-hidden" = TRUE)),
-        div(innerText = text))
+        div(innerText = text, style = "padding: 0 3px;"))
 }
 
 # hide :: String -> Empty
 hide <- function(x) {
     select_dom(x)$style$display <- "none"
+    x
 }
 
 # show :: String -> String -> Empty
 show <- function(x, type = "block") {
     select_dom(x)$style$display <- type
+    x
 }
 
 # send_shiny_request :: List -> Empty

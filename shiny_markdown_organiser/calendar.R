@@ -13,7 +13,7 @@ calendar_dates <- function(year, month) {
 
 calendar_table <- function(year, month) {
     tr <- function(date) glue::glue("| {date} | \t |")
-    res <- c("### ", "| Date | Plan |", "| --- | --- |",
+    res <- c("\n### ", "| Date | Plan |", "| --- | --- |",
              unlist(Map(tr, calendar_dates(year, month))))
     paste(res, collapse = "\n")
 }

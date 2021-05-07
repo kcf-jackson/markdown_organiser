@@ -13,6 +13,7 @@ enable_content_editable <-  function(node) {
             el$contentEditable <- TRUE
             el$focus()
         }
+        NULL
     }
     node
 }
